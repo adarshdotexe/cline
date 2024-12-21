@@ -153,7 +153,7 @@ const OpenRouterModelPicker: React.FC = () => {
 						}}
 						onFocus={() => setIsDropdownVisible(true)}
 						onKeyDown={handleKeyDown}
-						style={{ width: "100%" }}>
+						style={{ width: "100%", zIndex: OPENROUTER_MODEL_PICKER_Z_INDEX, position: "relative" }}>
 						{searchTerm && (
 							<div
 								className="input-icon-button codicon codicon-close"
@@ -234,6 +234,8 @@ const DropdownWrapper = styled.div`
 	width: 100%;
 `
 
+export const OPENROUTER_MODEL_PICKER_Z_INDEX = 1_000
+
 const DropdownList = styled.div`
 	position: absolute;
 	top: calc(100% - 3px);
@@ -243,7 +245,7 @@ const DropdownList = styled.div`
 	overflow-y: auto;
 	background-color: var(--vscode-dropdown-background);
 	border: 1px solid var(--vscode-list-activeSelectionBackground);
-	z-index: 1000;
+	z-index: ${OPENROUTER_MODEL_PICKER_Z_INDEX - 1};
 	border-bottom-left-radius: 3px;
 	border-bottom-right-radius: 3px;
 `
@@ -264,8 +266,19 @@ const DropdownItem = styled.div<{ isSelected: boolean }>`
 // Markdown
 
 const StyledMarkdown = styled.div`
-	font-family: var(--vscode-font-family), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-		Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+	font-family:
+		var(--vscode-font-family),
+		system-ui,
+		-apple-system,
+		BlinkMacSystemFont,
+		"Segoe UI",
+		Roboto,
+		Oxygen,
+		Ubuntu,
+		Cantarell,
+		"Open Sans",
+		"Helvetica Neue",
+		sans-serif;
 	font-size: 12px;
 	color: var(--vscode-descriptionForeground);
 
@@ -401,5 +414,5 @@ export const ModelDescriptionMarkdown = memo(
 			)} */}
 			</StyledMarkdown>
 		)
-	}
+	},
 )

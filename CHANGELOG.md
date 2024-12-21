@@ -1,5 +1,118 @@
 # Change Log
 
+## [3.0.2]
+
+- Adds block anchor matching for more reliable diff edits (if 3+ lines, first and last line are used as anchors to search for)
+- Add instruction to system prompt to use complete lines in diff edits to work properly with fallback strategies
+- Improves diff edit error handling
+- Adds new Gemini models
+
+## [3.0.0]
+
+- Cline now uses a search & replace diff based approach when editing large files to prevent code deletion issues.
+- Adds support for a more comprehensive auto-approve configuration, allowing you to specify which tools require approval and which don't.
+- Adds ability to enable system notifications for when Cline needs approval or completes a task.
+- Adds support for a root-level `.clinerules` file that can be used to specify custom instructions for the project.
+
+## [2.2.0]
+
+- Add support for Model Context Protocol (MCP), enabling Cline to use custom tools like web-search tool or GitHub tool
+- Add MCP server management tab accessible via the server icon in the menu bar
+- Add ability for Cline to dynamically create new MCP servers based on user requests (e.g., "add a tool that gets the latest npm docs")
+
+## [2.1.6]
+
+- Add LM Studio as an API provider option (make sure to start the LM Studio server to use it with the extension!)
+
+## [2.1.5]
+
+- Add support for prompt caching for new Claude model IDs on OpenRouter (e.g. `anthropic/claude-3.5-sonnet-20240620`)
+
+## [2.1.4]
+
+- AWS Bedrock fixes (add missing regions, support for cross-region inference, and older Sonnet model for regions where new model is not available)
+
+## [2.1.3]
+
+- Add support for Claude 3.5 Haiku, 66% cheaper than Sonnet with similar intelligence
+
+## [2.1.2]
+
+- Misc. bug fixes
+- Update README with new browser feature
+
+## [2.1.1]
+
+- Add stricter prompt to prevent Cline from editing files during a browser session without first closing the browser
+
+## [2.1.0]
+
+- Cline now uses Anthropic's new "Computer Use" feature to launch a browser, click, type, and scroll. This gives him more autonomy in runtime debugging, end-to-end testing, and even general web use. Try asking "Look up the weather in Colorado" to see it in action! (Available with Claude 3.5 Sonnet v2)
+
+## [2.0.19]
+
+- Fix model info for Claude 3.5 Sonnet v1 on OpenRouter
+
+## [2.0.18]
+
+- Add support for both v1 and v2 of Claude 3.5 Sonnet for GCP Vertex and AWS Bedrock (for cases where the new model is not enabled yet or unavailable in your region)
+
+## [2.0.17]
+
+- Update Anthropic model IDs
+
+## [2.0.16]
+
+- Adjustments to system prompt
+
+## [2.0.15]
+
+- Fix bug where modifying Cline's edits would lead him to try to re-apply the edits
+- Fix bug where weaker models would display file contents before using the write_to_file tool
+- Fix o1-mini and o1-preview errors when using OpenAI native
+
+## [2.0.14]
+
+- Gracefully cancel requests while stream could be hanging
+
+## [2.0.13]
+
+- Detect code omission and show warning with troubleshooting link
+
+## [2.0.12]
+
+- Keep cursor out of the way during file edit streaming animation
+
+## [2.0.11]
+
+- Adjust prompts around read_file to prevent re-reading files unnecessarily
+
+## [2.0.10]
+
+- More adjustments to system prompt to prevent lazy coding
+
+## [2.0.9]
+
+- Update system prompt to try to prevent Cline from lazy coding (`// rest of code here...`)
+
+## [2.0.8]
+
+- Fix o1-mini and o1-preview for OpenAI
+- Fix diff editor not opening sometimes in slow environments like project idx
+
+## [2.0.7]
+
+- Misc. bug fixes
+
+## [2.0.6]
+
+- Update URLs to https://github.com/cline/cline
+
+## [2.0.5]
+
+- Fixed bug where Cline's edits would stream into the active tab when switching tabs during a write_to_file
+- Added explanation in task continuation prompt that an interrupted write_to_file reverts the file to its original contents, preventing unnecessary re-reads
+- Fixed non-first chunk error handling in case stream fails mid-way through
 
 ## [2.0.0]
 
